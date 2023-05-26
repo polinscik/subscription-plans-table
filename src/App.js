@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import Fee from "./components/Fee";
+import JsonInfo from "./feeInfo.json";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {JsonInfo.map((subPlan) => (
+        <Fee
+          name={subPlan.name}
+          price={subPlan.price}
+          speed={subPlan.speed}
+          comment={subPlan.comment}
+          accent={subPlan.accent}
+          theme={subPlan.theme}></Fee>
+      ))}
     </div>
   );
 }

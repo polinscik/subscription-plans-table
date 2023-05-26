@@ -1,0 +1,67 @@
+:root {
+  --theme: #fff;
+  --theme-darker: darken(#fff, 20%);
+}
+
+[theme="blue"] {
+  --theme: #3737cc;
+  --theme-darker: hsl(240, 59%, 39%);
+}
+
+[theme="green"] {
+  --theme: #28a028;
+  --theme-darker: hsl(120, 60%, 27%);
+}
+
+[theme="red"] {
+  --theme: #d92525;
+  --theme-darker: hsl(0, 71%, 38%);
+}
+
+[theme="darkgray"] {
+  --theme: #454545;
+  --theme-darker: hsl(0, 0%, 15%);
+}
+
+.fee {
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
+  row-gap: 1px;
+  text-align: center;
+}
+
+.fee > * {
+  padding: 1.5em 2.5em;
+}
+
+.fee__head {
+  font-size: 1.3em;
+  background-color: var(--theme-darker);
+  color: beige;
+}
+
+.fee__price {
+  background-color: var(--theme);
+  color: beige;
+}
+
+.price-span {
+  font-size: 2em;
+}
+
+.fee__speed {
+  color: gray;
+  background-color: ghostwhite;
+}
+
+.fee__footer {
+  background-color: #d5d5d5;
+  color: gray;
+}
+
+.fee_accented {
+  box-shadow: 2px 7px 12px 5px rgba(0, 0, 0, 0.2);
+  border-top: 20px solid var(--theme-darker);
+  border-bottom: 20px solid #d5d5d5;
+}
