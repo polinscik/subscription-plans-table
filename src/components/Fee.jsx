@@ -2,7 +2,7 @@ import "./Fee.scss"
 
 function Fee(props){
     let classname = "fee";
-    if (props.accent == 'true') classname += " fee_accented" ;
+    if (props.accent === 'true') classname += " fee_accented" ;
     return (
         <div className={classname} theme={props.theme}>
             <div className="fee__head">{props.name}</div>
