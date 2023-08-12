@@ -7,6 +7,7 @@ function App() {
     <div className="App">
       {JsonInfo.map((subPlan) => (
         <Fee
+          key={subPlan.name}
           name={subPlan.name}
           price={subPlan.price}
           speed={subPlan.speed}
