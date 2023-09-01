@@ -1,10 +1,18 @@
 import "./Fee.scss";
+import {useState} from "react";
 
-function Fee({accent, theme, name, price, speed, comment}) {
+function Fee({theme, name, price, speed, comment}) {
   let classname = "fee";
-  if (accent === "true") classname += " fee_accented";
+
+  const [selected, setSelected] = useState(false);
+
+  const handleChange = () => {
+    setSelected(!selected);
+  };
+
+  if (selected) classname += " fee_accented";
   return (
-    <div className={classname} theme={theme}>
+    <div onClick={handleChange} className={classname} theme={theme}>
       <div className="fee__head">{name}</div>
       <div className="fee__price">
         <span className="price-span">{price}</span> руб. /мес
