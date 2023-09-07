@@ -4,26 +4,33 @@ import JsonInfo from "./feeInfo.json";
 import {useState} from "react";
 
 function App() {
-  // const [oneSelected, checkOneSelected] = useState();
+  let classname = "fee";
+  const [selected, setSelected] = useState(false);
+  let target;
+  if (selected) classname += " fee_accented";
 
-  const handleChange = (event) => {
+  function handleChange(event) {
+    setSelected(!selected);
     const fees = document.getElementsByClassName("fee_accented");
     console.log(fees);
-    if (fees && !event.target.classList.contains("fee_accented")) {
-      fees[0].classList.remove("fee_accented");
-    }
-  };
+    target = event.target;
+    console.log(target.id);
+    // if (fees && !event.target.classList.contains("fee_accented")) {
+    //   fees[0].classList.remove("fee_accented");
+    // }
+  }
   return (
     <div className="App">
       {JsonInfo.map((subPlan) => (
         <Fee
+          target={target}
           onClick={handleChange}
-          key={subPlan.name}
+          key={subPlan.price}
+          id={subPlan.price}
           name={subPlan.name}
           price={subPlan.price}
           speed={subPlan.speed}
           comment={subPlan.comment}
-          accent={subPlan.accent}
           theme={subPlan.theme}></Fee>
       ))}
     </div>
@@ -31,3 +38,5 @@ function App() {
 }
 
 export default App;
+
+//target в итоге никогда не род элемент с id а кусок/див на который кликнули. нужно получить нужный элемент
