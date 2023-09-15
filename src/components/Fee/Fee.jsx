@@ -1,13 +1,18 @@
 import "./Fee.scss";
 import {useState} from "react";
 
-function Fee({id, passChange, theme, name, price, speed, comment}) {
+function Fee({changedEl, id, passChange, theme, name, price, speed, comment}) {
   let classname = "fee";
 
   const [selected, setSelected] = useState(false);
 
   const handleChange = (e) => {
-    setSelected(!selected);
+    if (changedEl == price) {
+      setSelected(true);
+    } else setSelected(!selected);
+    console.log(
+      `01: Log from Fee: state SetSelected of ${name} was changed to ${!selected}.`
+    ); //фция из App убирает класс из элемента, но не меняет его стейт, поэтому при повторном клике стейт сначала меняется на false, и ничего не происходит
     passChange(price);
   };
 
@@ -26,7 +31,3 @@ function Fee({id, passChange, theme, name, price, speed, comment}) {
 }
 
 export default Fee;
-
-//Как сделать так, чтобы только один из компонентов мог быть выделен? Проверка - если уже есть выбранный комп. и он != кликнутому, отменить выбор. должно быть на уровень выше компонента одной карточки
-
-//target в итоге никогда не род элемент с id а кусок/див на который кликнули. нужно получить нужный элемент
