@@ -8,9 +8,7 @@ function Fee({id, passChange, theme, name, price, speed, comment}) {
 
   const handleChange = (e) => {
     setSelected(!selected);
-    const target = e.target; //эти три строки ничего не делают пока
-    console.log(target);
-    passChange(target);
+    passChange(price);
   };
 
   if (selected) classname += " fee_accented";

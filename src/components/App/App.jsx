@@ -4,18 +4,19 @@ import JsonInfo from "../../feeInfo.json";
 import {useState} from "react";
 
 function App() {
-  //стейт и функция не работают, это мои попытки сделать возможным выбор только одной карточки
-  const [hasSelected, setHasSelected] = useState(null);
+  const [wasSelected, setWasSelected] = useState(null);
 
-  function passChange(target) {
-    const arr = document.getElementsByClassName("fee_accented");
-    const fees = document.getElementsByClassName("fee");
-
-    if (arr.length > 0) {
-      console.log(arr, fees); //обновляется с опозданием
-      //если таргет компонента нет в arr (у него нет выделения) - снять выделение со всех карточек (убрать класс)
+  function passChange(price) {
+    setWasSelected(price);
+    const el = document.getElementById(wasSelected);
+    const currentEl = document.getElementById(price);
+    console.log(el, currentEl);
+    if (wasSelected !== null && wasSelected !== price) {
+      if (el.classList.contains("fee_accented")) {
+        el.classList.remove("fee_accented");
+      }
     }
-    setHasSelected(target);
+    // console.log("wasSelected:" + wasSelected, "Price:" + price);
   }
 
   return (
