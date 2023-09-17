@@ -5,18 +5,20 @@ import {useState} from "react";
 
 function App() {
   const [wasSelected, setWasSelected] = useState(null);
-  let changedEl = null;
+
   function passChange(price) {
-    setWasSelected(price);
-    const el = document.getElementById(wasSelected);
-    if (wasSelected !== null && wasSelected !== price) {
-      if (el.classList.contains("fee_accented")) {
-        el.classList.remove("fee_accented");
-        changedEl = el.id;
-        console.log(
-          `02: Log from App: accent was removed from element ${changedEl} but its state wasnt changed `
-        );
-      }
+    if (wasSelected === price) {
+      document.getElementById(wasSelected).classList.remove("fee_accented");
+      setWasSelected(null);
+    } else {
+      Array.from(document.getElementsByClassName("fee")).forEach((el) => {
+        if (el.id === price) {
+          el.classList.add("fee_accented");
+        } else if (el.id === wasSelected) {
+          el.classList.remove("fee_accented");
+        }
+      });
+      setWasSelected(price);
     }
   }
 
@@ -24,7 +26,6 @@ function App() {
     <div className="App">
       {JsonInfo.map((subPlan) => (
         <Fee
-          changedEl={changedEl}
           passChange={passChange}
           key={subPlan.price}
           id={subPlan.price}
